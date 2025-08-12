@@ -1,5 +1,5 @@
 import os
-from datetime import datetime, timezone
+from datetime import datetime
 from zoneinfo import ZoneInfo
 from flask import Flask, render_template, jsonify, make_response
 
@@ -20,7 +20,7 @@ def _paris_now():
         "iso": now.isoformat(timespec="seconds"),
         "unix": int(now.timestamp()),
         "tz": "Europe/Paris",
-        "offset": now.strftime("%z"),     # ex: +0200
+        "offset": now.strftime("%z"),
         "human": now.strftime("%A %d %B %Y • %H:%M:%S")
     }
 
@@ -52,4 +52,3 @@ def heure():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
-
